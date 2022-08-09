@@ -33,7 +33,7 @@
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
-ファイルは分割しても良いがメイン処理（GET,POST,DELETE）はリポジトリ内の"app.py"に記述する。
+ファイルは分割しても良いがメイン処理（GET,POST,DELETE）はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
 全てのユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
 ユーザー情報の追加 => POST:http://127.0.0.1/v1/users?type=add<br>
@@ -48,7 +48,7 @@ APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成�
 
 ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する。<br>
 SQLAlchemyを使用するならDBの種類は問わない。<br>
-参考までにテーブル作成のSQL(PostgreSQL)を以下に示す。<br>
+以下にテーブル作成SQL(PostgreSQL)の例を示す。<br>
 ```
 CREATE TABLE IF NOT EXISTS public.users
 (
@@ -66,7 +66,8 @@ CREATE TABLE IF NOT EXISTS public.users
 ## 4.WEBサーバの構築
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
 
-AWSやHerokuなどのレンタルサーバに作成したアプリケーションをデプロイして公開する。
+AWSやHerokuなどのレンタルサーバを使ってアプリケーションを公開する。
+以下にアーキテクチャ(AWS)の例を示す。<br>
 
 # sample-04.png
 
