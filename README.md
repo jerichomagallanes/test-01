@@ -9,7 +9,7 @@
 フロントエンドはReactでアプリケーションを作成する。<br>
 
 ---
-## 1.WEBアプリケーション作成能力
+## 1.WEBアプリケーション作成
 - Reactでフロントエンドアプリケーションを開発できる
 - HTTP通信でデータを更新・取得できる
 
@@ -28,7 +28,7 @@
 ![sample-01](sample-01.png "sample-01")
 
 ---
-## 2.REST APIの作成能力
+## 2.REST APIの作成
 - APIエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
@@ -43,7 +43,7 @@ APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成�
 # sample-02.png
 
 ---
-## 3.DBの操作能力
+## 3.DBの操作
 - DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
 
 ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する。<br>
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS public.users
 # sample-03.png
 
 ---
-## 4.WEBサーバの構築能力
+## 4.WEBサーバの構築
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
 
 AWSやHerokuなどのレンタルサーバに作成したアプリケーションをデプロイして公開する。
