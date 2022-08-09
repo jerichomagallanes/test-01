@@ -33,7 +33,7 @@
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
-ファイルは分割しても良いがメイン処理（GET,POST,DELETE）はリポジトリ内の"app.py"に記述する。<br>
+ファイルは分割しても良いがメイン処理(GET,POST,DELETE)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
 全てのユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
 ユーザー情報の追加 => POST:http://127.0.0.1/v1/users?type=add<br>
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS public.users
 ## 4.WEBサーバの構築
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
 
-AWSやHerokuなどのレンタルサーバを使ってアプリケーションを公開する。
+AWSやHerokuなどのレンタルサーバを使ってアプリケーションを公開する。<br>
 以下にアーキテクチャ(AWS)の例を示す。<br>
 
 # sample-04.png
