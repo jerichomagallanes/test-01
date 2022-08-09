@@ -3,7 +3,7 @@
 ---
 ## 0.言語とフレームワーク
 - フレームワーク => (Flask,React)
-- 言語 => (Python,JavaScript or TypeScript)
+- 言語 => (Python,JavaScript,TypeScript)
 
 バックエンドはFlaskでアプリケーションを作成する。<br>
 フロントエンドはReactでアプリケーションを作成する。<br>
@@ -29,8 +29,8 @@
 
 ---
 ## 2.REST APIの作成
-- APIエンドポイント(URI)を設計できる
-- GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
+- APIのエンドポイント(URI)を設計できる
+- GET,POST,DELETEなどのリクエストに対して適切な処理を行うことができる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
 ファイルは分割しても良いがメイン処理(GET,POST,DELETE)はリポジトリ内の"app.py"に記述する。<br>
