@@ -23,6 +23,7 @@
 5. 対象のIDを選択＋新しい名前を入力して"modUser"ボタンでDBに登録されている名前を変更する
 6. 対象のIDを選択して"delUser"ボタンでDBに登録されているレコードを削除する
 7. レスポンスのステータスコードに応じてアラートを表示する
+8. POSTしたい内容はクエリパラメータまたはBodyにJSONで記述の好きなほうでよい
 
 ---
 ## 2.REST APIの作成能力
@@ -30,14 +31,17 @@
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
 [Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する。
-
+GET
+> http://127.0.0.1/v1/users?id=all
+POST
+> http://127.0.0.1/v1/users?type=add
 ---
 ## 3.DBの操作能力
 - DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
 
-ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する<br>
-SQLAlchemyを使用するならDBの種類は問わない<br>
-参考までにテーブル作成のSQL(PostgreSQL)を以下に示す<br>
+ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する。<br>
+SQLAlchemyを使用するならDBの種類は問わない。<br>
+参考までにテーブル作成のSQL(PostgreSQL)を以下に示す。<br>
 ```
 CREATE TABLE IF NOT EXISTS public.users
 (
