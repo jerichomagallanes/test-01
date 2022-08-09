@@ -2,8 +2,8 @@
 
 ---
 ## 0.言語とフレームワーク
-- 言語 => (Python,JavaScript)
 - フレームワーク => (Flask,React)
+- 言語 => (Python,JavaScript or TypeScript)
 
 バックエンドはFlaskでアプリケーションを作成する<br>
 フロントエンドはReactでアプリケーションを作成する<br>
