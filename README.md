@@ -30,11 +30,11 @@
 - APIエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
-[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する。
-GET
-> http://127.0.0.1/v1/users?id=all
-POST
-> http://127.0.0.1/v1/users?type=add
+[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する。<br>
+GET<br>
+> http://127.0.0.1/v1/users?id=all<br>
+POST<br>
+> http://127.0.0.1/v1/users?type=add<br>
 ---
 ## 3.DBの操作能力
 - DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
