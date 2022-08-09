@@ -5,17 +5,17 @@
 - フレームワーク => (Flask,React)
 - 言語 => (Python,JavaScript or TypeScript)
 
-バックエンドはFlaskでアプリケーションを作成する<br>
-フロントエンドはReactでアプリケーションを作成する<br>
+バックエンドはFlaskでアプリケーションを作成する。<br>
+フロントエンドはReactでアプリケーションを作成する。<br>
 
 ---
 ## 1.WEBアプリケーション作成能力
 - Reactでフロントエンドアプリケーションを開発できる
 - HTTP通信でデータを更新・取得できる
 
-リポジトリ内にあるReactのプロジェクトフォルダ(ui)に[デモページ](http://52.199.224.236:5001/)のようなコンポーネントを作成する<br>
-レイアウトは最低限整っていればよしとする<br>
-以下の機能を実装する<br>
+リポジトリ内にあるReactのプロジェクトフォルダ(ui)に[デモページ](http://52.199.224.236:5001/)のようなコンポーネントを作成する。<br>
+レイアウトは最低限整っていればよしとする。<br>
+以下の機能を実装する。<br>
 1. デザインは[Bootstrap](https://react-bootstrap.github.io/)を使用する
 2. HTTP通信は[axios](https://www.npmjs.com/package/axios)を使用する
 3. ユーザー名＋メールアドレスを入力して"addUser"ボタンでDBに登録する
@@ -29,11 +29,11 @@
 - APIエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
-[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する
+[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する。
 
 ---
-## 3.ORMでDBを操作(CRUD処理)能力
-- DBに対してCreate,Read,Update,Delete処理を実行できる
+## 3.DBの操作能力
+- DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
 
 ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する<br>
 SQLAlchemyを使用するならDBの種類は問わない<br>
