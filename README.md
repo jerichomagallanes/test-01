@@ -27,7 +27,7 @@
 ## 3.ORMでDBを操作(CRUD処理)能力
 - DBに対してCreate,Read,Update,Delete処理を実行できる
 
-##### ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する
+ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する
 ##### SQLAlchemyを使用するならDBの種類は問わない
 ##### 参考までにテーブル作成のSQL(PostgreSQL)を以下に示す
 ```
