@@ -1,10 +1,11 @@
-#### スキルチェック
+# スキルチェック
 
+---
 ## 0.言語とフレームワーク
 - 言語 => (Python,JavaScript)
 - フレームワーク => (Flask,React)
----
 
+---
 ## 1.WEBアプリケーション作成能力
 - Reactでフロントエンドアプリケーションを開発できる
 - HTTP通信でデータを更新・取得できる
@@ -20,12 +21,14 @@
 6. 対象のIDを選択して"delUser"ボタンでDBに登録されているレコードを削除する
 7. レスポンスのステータスコードに応じてアラートを表示する
 
+---
 ## 2.REST APIの作成能力
 - APIエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
 [Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用してREST APIを作成する
 
+---
 ## 3.ORMでDBを操作(CRUD処理)能力
 - DBに対してCreate,Read,Update,Delete処理を実行できる
 
@@ -43,9 +46,9 @@ CREATE TABLE IF NOT EXISTS public.users
 )
 ```
 
+---
 ## 4.WEBサーバの構築能力
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
----
 
 
 
