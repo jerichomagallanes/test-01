@@ -33,9 +33,14 @@
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
+ファイルは分割しても良いがメイン処理（GET,POST,DELETE）はリポジトリ内の"app.py"に記述する。
 以下にURIの例を示す。<br>
 全てのユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
 ユーザー情報の追加 => POST:http://127.0.0.1/v1/users?type=add<br>
+ユーザー情報の変更 => POST:http://127.0.0.1/v1/users?type=mod<br>
+ユーザー情報の削除 => POST:http://127.0.0.1/v1/users?type=del<br>
+
+# sample-02.png
 
 ---
 ## 3.DBの操作能力
@@ -55,12 +60,16 @@ CREATE TABLE IF NOT EXISTS public.users
 )
 ```
 
+# sample-03.png
+
 ---
 ## 4.WEBサーバの構築能力
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
 
 AWSやHerokuなどのレンタルサーバに作成したアプリケーションをデプロイして公開する。
 
+# sample-04.png
 
-
-
+## 5.提出物
+- zipで圧縮したローカルリポジトリ
+- 公開したアプリケーションのURL
