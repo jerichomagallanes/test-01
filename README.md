@@ -30,7 +30,9 @@
 - APIエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切なプログラムを作成できる
 
-以下の機能を実装する。<br>
+バックエンドはFlaskでアプリケーションを作成する。<br>
+フロントエンドはReactでアプリケーションを作成する。<br>
+
 ---
 ## 3.DBの操作能力
 - DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
