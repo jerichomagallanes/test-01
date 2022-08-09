@@ -35,7 +35,7 @@
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
 ファイルは分割しても良いがメイン処理(GET,POST,DELETE)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
-全てのユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
+ユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
 ユーザー情報の追加 => POST:http://127.0.0.1/v1/users?type=add<br>
 ユーザー情報の変更 => POST:http://127.0.0.1/v1/users?type=mod<br>
 ユーザー情報の削除 => POST:http://127.0.0.1/v1/users?type=del<br>
