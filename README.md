@@ -1,18 +1,18 @@
 # システム開発能力の腕試し
 
-目的：UI＋API＋DBの基本的なシステムを作成できるかを確認する<br>
+目的１：UI＋API＋DBの基本的なシステムを作成できるかを確認する<br>
+目的２：経験のないフレームワークでも自力で調べて作成できるかを確認する<br>
+目的３：IPやポートなど最低限のネットワーク設定の知識があるかを確認する<br>
 
 ---
 ## 0.言語とフレームワーク
 
-- フレームワーク => (Flask,React)
-- 言語 => (Python,JavaScript,TypeScript)
-
-バックエンドはFlaskでアプリケーションを作成する。<br>
-フロントエンドはReactでアプリケーションを作成する。<br>
+- バックエンド => Flask(Python)
+- フロントエンド => React(JavaScript,TypeScript)
 
 ---
 ## 1.WEBアプリケーション作成
+
 - Reactでフロントエンドアプリケーションを開発できる
 - HTTP通信でデータを更新・取得できる
 
@@ -32,26 +32,29 @@
 
 ---
 ## 2.REST APIの作成
+
 - APIのエンドポイント(URI)を設計できる
 - GET,POST,DELETEなどのリクエストに対して適切な処理を行うことができる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
-ファイルは分割しても良いがメイン処理(GET,POST,DELETE)はリポジトリ内の"app.py"に記述する。<br>
+ファイルは分割しても良いがメイン処理(GET,POST)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
-ユーザー情報の取得 => (GET) http://127.0.0.1/v1/users?id=all<br>
-ユーザー情報の追加 => (POST) http://127.0.0.1/v1/users?type=add<br>
-ユーザー情報の変更 => (POST) http://127.0.0.1/v1/users?type=mod<br>
-ユーザー情報の削除 => (POST) http://127.0.0.1/v1/users?type=del<br>
+ユーザー情報の取得 => (GET) http://52.199.224.236:5000/v1/users?id=all<br>
+ユーザー情報の追加 => (POST) http://52.199.224.236:5000/v1/users?type=add + {"name":"hoge","mail":"hoge@gmail.com"}<br>
+ユーザー情報の変更 => (POST) http://52.199.224.236:5000/v1/users?type=mod + {"id":25,"name":"piyopiyo"}<br>
+ユーザー情報の削除 => (POST) http://52.199.224.236:5000/v1/users?type=del + {"id":25}<br>
 
 ![sample-02](image/sample-02.png "sample-02")
 
 ---
 ## 3.DBの操作
+
 - DBに対してORMでCRUD処理(Create,Read,Update,Delete)を実行できる
 
 ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する。<br>
 SQLAlchemyを使用するならDBの種類は問わない。<br>
 以下に作成したテーブルのSQL(PostgreSQL)例を示す。<br>
+
 ```
 CREATE TABLE IF NOT EXISTS public.users
 (
@@ -65,6 +68,7 @@ CREATE TABLE IF NOT EXISTS public.users
 
 ---
 ## 4.WEBサーバの構築
+
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
 
 AWSやHerokuなどのレンタルサーバを使ってアプリケーションを公開する。<br>
