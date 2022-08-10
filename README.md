@@ -1,7 +1,10 @@
-# スキルチェック
+# システム開発能力の腕試し
+
+目的：UI＋API＋DBの基本的なシステムを作成できるかを確認する<br>
 
 ---
 ## 0.言語とフレームワーク
+
 - フレームワーク => (Flask,React)
 - 言語 => (Python,JavaScript,TypeScript)
 
@@ -25,7 +28,7 @@
 7. レスポンスのステータスコードに応じてアラートを表示する
 8. POSTしたい内容はクエリパラメータまたはBodyにJSONで記述の好きなほうでよい
 
-![sample-01](sample-01.png "sample-01")
+![sample-01](image/sample-01.png "sample-01")
 
 ---
 ## 2.REST APIの作成
@@ -35,12 +38,12 @@
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
 ファイルは分割しても良いがメイン処理(GET,POST,DELETE)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
-ユーザー情報の取得 => GET:http://127.0.0.1/v1/users?id=all<br>
-ユーザー情報の追加 => POST:http://127.0.0.1/v1/users?type=add<br>
-ユーザー情報の変更 => POST:http://127.0.0.1/v1/users?type=mod<br>
-ユーザー情報の削除 => POST:http://127.0.0.1/v1/users?type=del<br>
+ユーザー情報の取得 => (GET) http://127.0.0.1/v1/users?id=all<br>
+ユーザー情報の追加 => (POST) http://127.0.0.1/v1/users?type=add<br>
+ユーザー情報の変更 => (POST) http://127.0.0.1/v1/users?type=mod<br>
+ユーザー情報の削除 => (POST) http://127.0.0.1/v1/users?type=del<br>
 
-# sample-02.png
+![sample-02](image/sample-02.png "sample-02")
 
 ---
 ## 3.DBの操作
@@ -48,7 +51,7 @@ APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成�
 
 ORMは[SQLAlchemy](https://www.sqlalchemy.org/)を使用する。<br>
 SQLAlchemyを使用するならDBの種類は問わない。<br>
-以下にテーブル作成SQL(PostgreSQL)の例を示す。<br>
+以下に作成したテーブルのSQL(PostgreSQL)例を示す。<br>
 ```
 CREATE TABLE IF NOT EXISTS public.users
 (
@@ -60,8 +63,6 @@ CREATE TABLE IF NOT EXISTS public.users
 )
 ```
 
-# sample-03.png
-
 ---
 ## 4.WEBサーバの構築
 - サーバに作成したアプリケーションをデプロイし、サービスを開始できる
@@ -69,7 +70,7 @@ CREATE TABLE IF NOT EXISTS public.users
 AWSやHerokuなどのレンタルサーバを使ってアプリケーションを公開する。<br>
 以下にアーキテクチャ(AWS)の例を示す。<br>
 
-# sample-04.png
+![sample-03](image/sample-03.png "sample-03")
 
 ---
 ## 5.提出物
