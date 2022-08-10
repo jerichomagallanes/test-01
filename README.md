@@ -7,8 +7,8 @@
 ---
 ## 0.言語とフレームワーク
 
-- バックエンド => Flask(Python)
-- フロントエンド => React(JavaScript,TypeScript)
+- バックエンド：Flask(Python)
+- フロントエンド：React(JavaScript,TypeScript)
 
 ---
 ## 1.WEBアプリケーション作成
@@ -26,7 +26,7 @@
 5. 対象のIDを選択＋新しい名前を入力して"modUser"ボタンでDBに登録されている名前を変更する
 6. 対象のIDを選択して"delUser"ボタンでDBに登録されているレコードを削除する
 7. レスポンスのステータスコードに応じてアラートを表示する
-8. POSTしたい内容はクエリパラメータまたはBodyにJSONで記述の好きなほうでよい
+8. POSTしたい内容はクエリパラメータに全て記述またはBodyにJSONで記述の好きなほうでよい
 
 ![sample-01](image/sample-01.png "sample-01")
 
@@ -39,10 +39,10 @@
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
 ファイルは分割しても良いがメイン処理(GET,POST)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
-ユーザー情報の取得 => (GET) http://52.199.224.236:5000/v1/users?id=all<br>
-ユーザー情報の追加 => (POST) http://52.199.224.236:5000/v1/users?type=add + {"name":"hoge","mail":"hoge@gmail.com"}<br>
-ユーザー情報の変更 => (POST) http://52.199.224.236:5000/v1/users?type=mod + {"id":25,"name":"piyopiyo"}<br>
-ユーザー情報の削除 => (POST) http://52.199.224.236:5000/v1/users?type=del + {"id":25}<br>
+ユーザー情報の取得：(GET) http://52.199.224.236:5000/v1/users?id=all<br>
+ユーザー情報の追加：(POST) http://52.199.224.236:5000/v1/users?type=add + {"name":"hoge","mail":"hoge@gmail.com"}<br>
+ユーザー情報の変更：(POST) http://52.199.224.236:5000/v1/users?type=mod + {"id":25,"name":"piyopiyo"}<br>
+ユーザー情報の削除：(POST) http://52.199.224.236:5000/v1/users?type=del + {"id":25}<br>
 
 ![sample-02](image/sample-02.png "sample-02")
 
