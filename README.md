@@ -37,7 +37,7 @@
 - GET,POST,DELETEなどのリクエストに対して適切な処理を行うことができる
 
 APIは[Flask](https://flask.palletsprojects.com/en/2.2.x/)を使用して作成する。<br>
-ファイルは分割しても良いがメイン処理(GET,POST)はリポジトリ内の"app.py"に記述する。<br>
+ファイルは分割しても良いがメイン処理(GET,POSTまわり)はリポジトリ内の"app.py"に記述する。<br>
 以下にURIの例を示す。<br>
 ユーザー情報の取得：(GET) http://52.199.224.236:5000/v1/users?id=all<br>
 ユーザー情報の追加：(POST) http://52.199.224.236:5000/v1/users?type=add + {"name":"hoge","mail":"hoge@gmail.com"}<br>
