@@ -28,40 +28,42 @@ class UserSchema(ma.Schema):
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 
-@app.route('/users', methods = ['GET'])
-def get_users():
-    all_users = Users.query.all()
-    results = users_schema.dump(all_users)
-    return jsonify(results)
-
-@app.route('/get/<id>', methods = ['GET'])
-def user_details(id):
-    user = Users.query.get(id)
-    return user_schema.jsonify(user)
-
-@app.route('/add', methods = ['POST'])
-def add_user():
+@app.route('/users', methods = ['POST'])
+def createUser():
     name = request.json['name']
     email = request.json['email']
 
     user = Users(name, email)
     db.session.add(user)
     db.session.commit()
-    return jsonify({'message': "User Added Successfully"})
+    return jsonify({'id': user.id, 'message': "User Added Successfully"})
     # return user_schema.jsonify(user)
 
-@app.route('/update/<id>', methods = ['PUT'])
-def update_user(id):
+@app.route('/users', methods = ['GET'])
+def getUsers():
+    all_users = Users.query.all()
+    results = users_schema.dump(all_users)
+    return jsonify(results)
+
+@app.route('/user/<id>', methods = ['GET'])
+def getUser(id):
+    user = Users.query.get(id)
+    return user_schema.jsonify(user)
+
+@app.route('/users/<id>', methods = ['PUT'])
+def updateUser(id):
     user = Users.query.get(id)
     name = request.json['name']
+    email = request.json['email']
 
     user.name = name
+    user.email = email
     db.session.commit()
     return jsonify({'message': "User Updated Successfully"})
     # return user_schema.jsonify(user)
 
-@app.route('/delete/<id>', methods = ['DELETE'])
-def delete_user(id):
+@app.route('/users/<id>', methods = ['DELETE'])
+def deleteUser(id):
     user = Users.query.get(id)
     db.session.delete(user)
     db.session.commit()
