@@ -5,7 +5,7 @@ import {
     Form,
     Card
 } from "react-bootstrap";
-import Select from 'react-select'
+import Select from 'react-select';
 import { toast } from 'react-toastify';
 import {useDispatch, useSelector} from "react-redux";
 import { loadUsers, deleteUser, addUser, updateUser } from './redux/actions';
@@ -35,7 +35,6 @@ const Home = () => {
     const [isFromGet, setIsFromGet] = useState(false);
 
     useEffect(() => {
-        console.log(message);
         if (message) {
             toast.success(message);
         }
@@ -160,9 +159,11 @@ const Home = () => {
                                 value={email || ""}
                                 onChange={handleChange} />
                             </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Add User
-                            </Button>
+                            <div className="d-grid gap-2">
+                                <Button variant="primary" type="submit">
+                                    Add User
+                                </Button>
+                            </div>
                         </Form>
                     </Card.Body>
                 </Card>
@@ -171,7 +172,7 @@ const Home = () => {
                 <Card>
                     <Card.Header>Get Users</Card.Header>
                     <Card.Body>
-                        <Table striped bordered hover variant="dark">
+                        <Table striped bordered hover variant="dark" size="sm">
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -193,9 +194,11 @@ const Home = () => {
                             })}
                         </tbody>
                         </Table>
-                        <Button variant="info" type="submit" onClick={handleGet}>
-                            Get Users
-                        </Button>
+                        <div className="d-grid gap-2">
+                            <Button variant="info" type="submit" onClick={handleGet}>
+                                Get Users
+                            </Button>
+                        </div>
                     </Card.Body>
                 </Card>
             </div>
@@ -221,9 +224,11 @@ const Home = () => {
                                 value={userNameToModify} />
                             </Form.Group>
                         </Form>
-                        <Button variant="warning" type="submit" onClick={() => handleUpdate(userIdToModify)}>
-                            Modify User Name
-                        </Button>
+                        <div className="d-grid gap-2">
+                            <Button variant="warning" type="submit" onClick={() => handleUpdate(userIdToModify)}>
+                                Modify User Name
+                            </Button>
+                        </div>
                     </Card.Body>
                 </Card>
             </div>
@@ -239,9 +244,11 @@ const Home = () => {
                             })} 
                             getOptionValue={option=>option.label}
                             onChange={handleSelectDelete} />
-                        <Button variant="danger" type="submit" onClick={() => handleDelete(userIdToDelete)}>
-                            Delete User
-                        </Button>
+                        <div className="d-grid gap-2">
+                            <Button variant="danger" type="submit" onClick={() => handleDelete(userIdToDelete)}>
+                                Delete User
+                            </Button>
+                        </div>
                     </Card.Body>
                 </Card>
             </div> 
