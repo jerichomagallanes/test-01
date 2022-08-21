@@ -1,17 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import {
-    Navbar, 
     Table, 
-    Container, 
-    Row, 
-    Col, 
     Button, 
-    ButtonGroup, 
-    Form
+    Form,
+    Card
 } from "react-bootstrap";
+import Select from 'react-select'
 import { toast } from 'react-toastify';
 import {useDispatch, useSelector} from "react-redux";
-import { loadUsers, deleteUser, addUser, loadSingleUser, updateUser } from './redux/actions';
+import { loadUsers, deleteUser, addUser, updateUser } from './redux/actions';
 
 const initialState = {
     name: "",
@@ -20,28 +17,49 @@ const initialState = {
 
 const Home = () => {
     const [state, setState] = useState(initialState);
-    const [editMode, setEditMode] = useState(false);
-    const [userId, setUserId] = useState(null);
+
+    const [userIdToModify, setUserIdToModify] = useState("");
+    const [userNameToModify, setUserNameToModify] = useState("");
+    const [updatedUserName, setUpdatedUserName] = useState("");
+    const [selectModifyState, setSelectModifyState] = useState(null);
+
+    const [userIdToDelete, setUserIdToDelete] = useState("");
+    const [userNameToDelete, setUserNameToDelete] = useState("");
+    const [selectDeleteState, setSelectDeleteState] = useState(null);
+
     const dispatch = useDispatch();
-    const {users, message, user} = useSelector(state => state.data);
+    const {users, message} = useSelector(state => state.data);
 
     const {name, email} = state;
 
-    useEffect(() => {
-        dispatch(loadUsers());
-    }, []);
+    const [isFromGet, setIsFromGet] = useState(false);
 
     useEffect(() => {
+        console.log(message);
         if (message) {
             toast.success(message);
         }
     }, [message]);
 
     useEffect(() => {
-        if (user) {
-            setState({ ...user });
+        if (users && isFromGet) {
+
+            var firstUserId = users[0]?.id;
+            var firstUserName = users[0]?.name;
+
+            setUserIdToModify(firstUserId);
+            setUserNameToModify(firstUserName);
+            setSelectModifyState({value: firstUserName, label: firstUserId});
+            setUpdatedUserName({"name": firstUserName});
+
+            setUserIdToDelete(firstUserId);
+            setUserNameToDelete(firstUserName);
+            setSelectDeleteState({value: firstUserName, label: firstUserId});
+
+            setIsFromGet(false);
+            
         }
-    }, [user]);
+    }, [users]);
 
     const handleChange = (e) => {
         let {name, value} = e.target;
@@ -52,105 +70,182 @@ const Home = () => {
         e.preventDefault();
 
         if(!name || !email){
-            toast.error("Please fill all  input fields")
+            toast.error("Please fill all  input fields");
         } else {
-            if(!editMode){
-                dispatch(addUser(state));
-                setState({name: "", email: ""});
-            } else {
-                dispatch(updateUser(state, userId))
-                setState({name: "", email: ""});
-                setEditMode(false);
-                setUserId(null);
+            dispatch(addUser(state));
+            setState({name: "", email: ""});
+        }
+    };
+
+    const handleGet = (e) => {
+        e.preventDefault();
+        dispatch(loadUsers());
+        setIsFromGet(true);
+    };
+
+    const handleDelete = (id) => {
+        if(!userIdToDelete){
+            toast.error("Please fill all  input fields");
+        } else {
+            if (window.confirm("Are you sure that you want to delete this user?")) {
+                dispatch(deleteUser(id));
+                setUserIdToDelete("");
+                setUserNameToDelete("");
+                setSelectDeleteState(null);
             }
         }
     };
 
-    const handleDelete = (id) => {
-        if (window.confirm("Are you sure that you want to delete this user?")) {
-            dispatch(deleteUser(id));
+    const handleUpdate = (id) => {
+        console.log(updatedUserName);
+        if(!userIdToModify || !userNameToModify){
+            toast.error("Please fill all  input fields");
+        } else {
+            dispatch(updateUser(updatedUserName, id));
+            setUserIdToModify("");
+            setUserNameToModify("");
+            setUpdatedUserName("");
+            setSelectModifyState(null);
         }
     };
 
-    const handleUpdate = (id) => {
-        dispatch(loadSingleUser(id));
-        setUserId(id);
-        setEditMode(true);
+    const handleSelectModify = (selectedOption) => {
+        var userId = selectedOption.label;
+        var userName = users.find(obj => {
+            return obj.id === userId;
+        }).name;
+        setUserIdToModify(userId);
+        setUserNameToModify(userName);
+        setUpdatedUserName({"name": userName});
+        setSelectModifyState({value: userName, label: userId});
+    };
+
+    const handleModifyName = (e) => {
+        let {name, value} = e.target;
+        setUpdatedUserName({ ...updatedUserName, [name]: value});
+        setUserNameToModify(value);
+    };
+
+
+    const handleSelectDelete = (selectedOption) => {
+        var userId = selectedOption.label;
+        var userName = users.find(obj => {
+            return obj.id === userId;
+          }).name;
+        setUserIdToDelete(userId);
+        setUserNameToDelete(userName);
+        setSelectDeleteState({value: userName, label: userId});
     };
     
     return (
-        <>
-        <Navbar bg="primary" variant="dark" className="justify-content-center">
-            <Navbar.Brand>Python Flask SQLAlchemy Redux CRUD Application</Navbar.Brand>
-        </Navbar>
-        <Container>
-            <Row>
-                <Col md={4}>
-                    <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                            <Form.Label>Name</Form.Label>
-                            <Form.Control 
-                            type="text"
-                            placeholder='Name'
-                            name="name"
-                            value={name || ""}
-                            onChange={handleChange}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control 
-                            type="email"
-                            placeholder='Email'
-                            name="email"
-                            value={email || ""}
-                            onChange={handleChange}
-                            />
-                        </Form.Group>
-                        <div className="d-grid gap-2 mt-2">
-                            <Button type="submit" variant="primary" size="lg">
-                                {editMode ? "Update" : "Submit"}
+        <div className='app'>
+            <div className='card'>
+                <Card>
+                    <Card.Header>Add User</Card.Header>
+                    <Card.Body>
+                        <Form onSubmit={handleSubmit}>
+                            <Form.Group className="mb-3">
+                                <Form.Control 
+                                type="text"
+                                placeholder='Please input your name...'
+                                name="name"
+                                value={name || ""}
+                                onChange={handleChange} />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Control 
+                                type="email"
+                                placeholder='Please input your email...'
+                                name="email"
+                                value={email || ""}
+                                onChange={handleChange} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit">
+                                Add User
                             </Button>
-                        </div>
-                    </Form>
-                </Col>
-                <Col md={8}>
-                    <Table bordered hover>
-                        <thead>
-                            <th>#</th>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Action</th>
-                        </thead>
-                        {users && users.map((item, index) => (
-                            <tbody key={index}>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </div>
+            <div className='card'>
+                <Card>
+                    <Card.Header>Get Users</Card.Header>
+                    <Card.Body>
+                        <Table striped bordered hover variant="dark">
+                            <thead>
                                 <tr>
-                                    <td>{index+1}</td>
-                                    <td>{item.id}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.email}</td>
-                                    <td>
-                                        <ButtonGroup>
-                                            <Button 
-                                                style={{marginRight: "5px"}} 
-                                                variant="danger"
-                                                onClick={() => handleDelete(item.id)}>
-                                                Delete
-                                            </Button>
-                                            <Button variant="secondary" onClick={() => handleUpdate(item.id)}>
-                                                Update
-                                            </Button>
-                                        </ButtonGroup>
-                                    </td>
+                                    <th>#</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
                                 </tr>
-                            </tbody>
-                        ))}
-                    </Table>
-                </Col>
-            </Row>
-        </Container>
-        </>
+                            </thead>
+                            <tbody> {
+                                users.map((user, index) => {
+                                return (
+                                    <tr>
+                                        <td>{index}</td>
+                                        <td>{user.id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                        </Table>
+                        <Button variant="info" type="submit" onClick={handleGet}>
+                            Get Users
+                        </Button>
+                    </Card.Body>
+                </Card>
+            </div>
+            <div className='card'>
+                <Card>
+                    <Card.Header>Modify User Name</Card.Header>
+                    <Card.Body>
+                        <Select 
+                            placeholder="Please select id to modify the username"
+                            value={selectModifyState}
+                            options={users.map((user) => {
+                                return { value: user.name, label: user.id }
+                            })}
+                            getOptionValue={option=>option.label}
+                            onChange={handleSelectModify} />
+                        <Form>
+                            <Form.Group className="mb-3">
+                                <Form.Control 
+                                type="text"
+                                placeholder='Please input the new name...'
+                                name="name"
+                                onChange={handleModifyName}
+                                value={userNameToModify} />
+                            </Form.Group>
+                        </Form>
+                        <Button variant="warning" type="submit" onClick={() => handleUpdate(userIdToModify)}>
+                            Modify User Name
+                        </Button>
+                    </Card.Body>
+                </Card>
+            </div>
+            <div className='card'>
+                <Card>
+                    <Card.Header>Delete User</Card.Header>
+                    <Card.Body>
+                        <Select 
+                            placeholder="Please select id to delete" 
+                            value={selectDeleteState}
+                            options={users.map((user) => {
+                                return { value: user.name, label: user.id }
+                            })} 
+                            getOptionValue={option=>option.label}
+                            onChange={handleSelectDelete} />
+                        <Button variant="danger" type="submit" onClick={() => handleDelete(userIdToDelete)}>
+                            Delete User
+                        </Button>
+                    </Card.Body>
+                </Card>
+            </div> 
+        </div>
     )
 }
 

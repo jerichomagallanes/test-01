@@ -20,11 +20,6 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 message: action.payload,
             };
-        case types.GET_SINGLE_USER:
-            return {
-                ...state,
-                user: action.payload,
-            };
         default:
             return state;
     }

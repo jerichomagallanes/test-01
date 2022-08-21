@@ -8,11 +8,6 @@ const getUsers = (users) => ({
     payload: users
 });
 
-const getUser = (users) => ({
-    type: types.GET_SINGLE_USER,
-    payload: users
-});
-
 const userAdded = (message) => ({
     type: types.ADD_USER,
     payload: message
@@ -57,17 +52,6 @@ export const deleteUser = (id) => {
         .then((resp) => {
             dispatch(userDeleted(resp.data.message));
             dispatch(loadUsers());
-        })
-        .catch(err => console.log(err))
-    }
-}
-
-export const loadSingleUser = (id) => {
-    return function(dispatch) {
-        axios
-        .get(`${API}/user/${id}`)
-        .then((resp) => {
-            dispatch(getUser(resp.data));
         })
         .catch(err => console.log(err))
     }
