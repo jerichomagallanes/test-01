@@ -1,9 +1,10 @@
 from flask import Flask, jsonify, request
+from flask.helpers import send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='build', static_url_path='')
 CORS(app)
 
 
@@ -33,6 +34,10 @@ class UserSchema(ma.Schema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+
+@app.route('/')
+def serve():
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/users', methods = ['POST'])
 def createUser():
@@ -66,5 +71,5 @@ def deleteUser(id):
     db.session.commit()
     return jsonify({'message': user.name + " was deleted successfully"})
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run()
