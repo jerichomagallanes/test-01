@@ -6,7 +6,13 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://ilizhkncoavclm:597cd6257962d1df229d89839d44f83270a55cddd315ea4659e732ea7f317d76@ec2-44-206-137-96.compute-1.amazonaws.com:5432/de24dvu2rmdgrj'
+
+uri = 'postgres://ilizhkncoavclm:597cd6257962d1df229d89839d44f83270a55cddd315ea4659e732ea7f317d76@ec2-44-206-137-96.compute-1.amazonaws.com:5432/de24dvu2rmdgrj'
+
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
