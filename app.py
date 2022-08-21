@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
@@ -33,6 +33,10 @@ class UserSchema(ma.Schema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 @app.route('/users', methods = ['POST'])
 def createUser():
