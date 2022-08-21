@@ -1,7 +1,7 @@
 import * as types from "./actionTypes";
 import axios from "axios"
 
-const API = "http://127.0.0.1:5000"
+const API = "https://test-01-jericho-magallanes.herokuapp.com"
 
 const getUsers = (users) => ({
     type: types.GET_USERS,
