@@ -1,1 +1,1 @@
-web: npm run serve app:app
+web: gunicorn app:app
