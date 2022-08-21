@@ -37,7 +37,6 @@ def createUser():
     db.session.add(user)
     db.session.commit()
     return jsonify({'id': user.id, 'message': name + " was added successfully"})
-    # return user_schema.jsonify(user)
 
 @app.route('/users', methods = ['GET'])
 def getUsers():
@@ -53,7 +52,6 @@ def updateUser(id):
     user.name = name
     db.session.commit()
     return jsonify({'message': "Successfully changed name to " + name})
-    # return user_schema.jsonify(user)
 
 @app.route('/users/<id>', methods = ['DELETE'])
 def deleteUser(id):
@@ -61,7 +59,6 @@ def deleteUser(id):
     db.session.delete(user)
     db.session.commit()
     return jsonify({'message': user.name + " was deleted successfully"})
-    # return user_schema.jsonify(user)
 
 if __name__ == "__main__":
     app.run(debug=True)
